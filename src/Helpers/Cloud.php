@@ -54,7 +54,9 @@ class Cloud
             throw new UnableToWriteFile(sprintf('Unable to write file at location [%s]', $uploadPath));
         }
 
-        fclose($stream);
+        if (is_resource($stream)) {
+            fclose($stream);
+        }
     }
 
     /**
